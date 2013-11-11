@@ -149,6 +149,7 @@ if (window.module !== undefined) {
                     node = getSelectionStart();
                     tagName = node.tagName.toLowerCase();
                     if (!(self.options.disableReturn || this.getAttribute('data-disable-return')) && tagName !== 'li') {
+                        if (node.innerHTML.indexOf("contenteditable") !== -1) return; 
                         document.execCommand('formatBlock', false, 'p');
                         if (tagName === 'a') {
                             document.execCommand('unlink', false, null);
